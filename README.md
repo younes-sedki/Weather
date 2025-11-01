@@ -64,27 +64,6 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-## Design System
-
-The app uses a comprehensive design system including:
-
-```css
-:root {
-  /* Typography */
-  --body-base-font-family: "Inter", Helvetica;
-  --body-base-font-size: 16px;
-  
-  /* Colors */
-  --color-primitives-gray-900: rgba(30, 30, 30, 1);
-  --color-primitives-white-1000: rgba(255, 255, 255, 1);
-  
-  /* Spacing */
-  --size-space-200: 8px;
-  --size-space-600: 24px;
-  --size-space-1200: 48px;
-}
-```
-
 ## Browser Support
 
 The application supports all modern browsers:
