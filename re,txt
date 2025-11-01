@@ -1,0 +1,287 @@
+import React from "react";
+
+export const Navigation = () => {
+  return (
+    <nav
+      className="w-[1440px] h-[164px] flex justify-between bg-white"
+      role="navigation"
+      aria-label="Main navigation"
+    >
+      <div className="flex items-center justify-center mt-[39px] w-[152px] h-[50px] ml-[135px] font-body-text font-[number:var(--body-text-font-weight)] text-black text-[length:var(--body-text-font-size)] tracking-[var(--body-text-letter-spacing)] leading-[var(--body-text-line-height)] [font-style:var(--body-text-font-style)]">
+        <a
+          href="/"
+          className="no-underline text-black"
+          aria-label="Weather - Home"
+        >
+          Weather
+        </a>
+      </div>
+
+      <div className="inline-flex mt-14 w-[58px] h-[30px] relative mr-20 items-center justify-end gap-[var(--variable-collection-spacing-m)]">
+        <a
+          href="/about"
+          className="relative flex items-center justify-center w-fit mt-[-1.00px] font-body-text font-[number:var(--body-text-font-weight)] text-black text-[length:var(--body-text-font-size)] tracking-[var(--body-text-letter-spacing)] leading-[var(--body-text-line-height)] whitespace-nowrap [font-style:var(--body-text-font-style)] no-underline hover:opacity-80 transition-opacity"
+        >
+          About
+        </a>
+      </div>
+    </nav>
+  );
+};
+
+import React from "react";
+
+export const InputField = () => {
+  const [searchValue, setSearchValue] = React.useState("");
+
+  const handleInputChange = (e) => {
+    setSearchValue(e.target.value);
+  };
+
+  return (
+    <div className="flex flex-col w-[527px] items-start gap-[var(--size-space-200)] relative">
+      <input
+        className="min-w-60 pt-[var(--size-space-300)] pr-[var(--size-space-400)] pb-[var(--size-space-300)] pl-[var(--size-space-400)] relative self-stretch w-full mt-[-0.50px] mb-[-1.00px] ml-[-1.00px] mr-[-1.00px] bg-color-background-default-default rounded-[var(--size-radius-200)] overflow-hidden border border-solid border-color-border-default-default flex-1 font-single-line-body-base font-[number:var(--single-line-body-base-font-weight)] text-color-text-default-default text-[length:var(--single-line-body-base-font-size)] tracking-[var(--single-line-body-base-letter-spacing)] leading-[var(--single-line-body-base-line-height)] [font-style:var(--single-line-body-base-font-style)]"
+        placeholder="Search City"
+        type="text"
+        value={searchValue}
+        onChange={handleInputChange}
+        aria-label="Search City"
+        role="searchbox"
+      />
+    </div>
+  );
+};
+
+
+import React from "react";
+import { Icon } from "./Icon";
+
+export const ButtonElevated = () => {
+  return (
+    <button
+      type="button"
+      className="inline-flex h-12 items-center justify-center relative"
+      aria-label="Search"
+    >
+      <span className="inline-flex items-center justify-center relative flex-[0_0_auto] bg-colors-grays-white rounded-[100px] overflow-hidden shadow-m3-elevation-light-1">
+        <span className="inline-flex items-center justify-center gap-2 px-4 py-2.5 relative flex-[0_0_auto]">
+          <Icon className="!relative !w-5 !h-5" aria-hidden="true" />
+          <span className="relative flex items-center justify-center w-fit mt-[-1.00px] font-m3-label-large font-[number:var(--m3-label-large-font-weight)] text-m-3black text-[length:var(--m3-label-large-font-size)] tracking-[var(--m3-label-large-letter-spacing)] leading-[var(--m3-label-large-line-height)] whitespace-nowrap [font-style:var(--m3-label-large-font-style)]">
+            Search
+          </span>
+        </span>
+      </span>
+    </button>
+  );
+};
+
+
+import React, { useState } from "react";
+
+export const PanelImageContent = () => {
+  const [weatherData, setWeatherData] = useState({
+    city: "San Francisco",
+    country: "USA",
+    temperature: "72°F",
+    condition: "Partly Cloudy",
+    humidity: "65%",
+    windSpeed: "12 mph",
+  });
+
+  return (
+    <section
+      className="flex w-[601px] items-center gap-[var(--size-space-1200)] pt-[var(--size-space-1600)] pr-[var(--size-space-1600)] pb-[var(--size-space-1600)] pl-[var(--size-space-1600)] relative bg-color-background-default-default"
+      aria-label="Weather information panel"
+    >
+      <div className="w-[484px] h-[351px] gap-[var(--size-space-600)] mr-[-11.00px] flex flex-col items-start relative">
+        <header className="gap-[var(--size-space-200)] self-stretch w-full flex-[0_0_auto] flex flex-col items-start relative">
+          <h1 className="relative self-stretch mt-[-1.00px] font-heading font-[number:var(--heading-font-weight)] text-color-text-default-default text-[length:var(--heading-font-size)] tracking-[var(--heading-letter-spacing)] leading-[var(--heading-line-height)] [font-style:var(--heading-font-style)]">
+            Weather Today in {weatherData.city}, {weatherData.country}
+          </h1>
+        </header>
+
+        <div className="flex items-start relative self-stretch w-full flex-[0_0_auto]">
+          <p className="relative flex-1 mt-[-1.00px] font-body-base font-[number:var(--body-base-font-weight)] text-color-text-default-default text-[length:var(--body-base-font-size)] tracking-[var(--body-base-letter-spacing)] leading-[var(--body-base-line-height)] [font-style:var(--body-base-font-style)]">
+            {weatherData.temperature} - {weatherData.condition}
+          </p>
+        </div>
+
+        <div className="flex items-start relative self-stretch w-full flex-[0_0_auto]">
+          <p className="relative flex-1 mt-[-1.00px] font-body-base font-[number:var(--body-base-font-weight)] text-color-text-default-default text-[length:var(--body-base-font-size)] tracking-[var(--body-base-letter-spacing)] leading-[var(--body-base-line-height)] [font-style:var(--body-base-font-style)]">
+            Humidity: {weatherData.humidity} | Wind: {weatherData.windSpeed}
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+
+tailwind.css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  button,
+  input,
+  select,
+  textarea {
+    @apply appearance-none bg-transparent border-0 outline-none;
+  }
+}
+
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .all-\[unset\] {
+    all: unset;
+  }
+}
+
+:root {
+  --body-base-font-family: "Inter", Helvetica;
+  --body-base-font-size: 16px;
+  --body-base-font-style: normal;
+  --body-base-font-weight: 400;
+  --body-base-letter-spacing: 0px;
+  --body-base-line-height: 139.9999976158142%;
+  --color-background-default-default: var(--color-primitives-white-1000);
+  --color-primitives-gray-900: rgba(30, 30, 30, 1);
+  --color-primitives-white-1000: rgba(255, 255, 255, 1);
+  --color-text-default-default: var(--color-primitives-gray-900);
+  --heading-font-family: "Inter", Helvetica;
+  --heading-font-size: 24px;
+  --heading-font-style: normal;
+  --heading-font-weight: 600;
+  --heading-letter-spacing: -0.48px;
+  --heading-line-height: 120.00000476837158%;
+  --size-space-1200: 48px;
+  --size-space-1600: 64px;
+  --size-space-200: 8px;
+  --size-space-600: 24px;
+}
+
+[data-color-mode="SDS-light"] {
+  --color-background-default-default: var(--color-primitives-white-1000);
+  --color-text-default-default: var(--color-primitives-gray-900);
+}
+
+[data-color-mode="SDS-dark"] {
+  --color-background-default-default: var(--color-primitives-gray-900);
+  --color-text-default-default: var(--color-primitives-white-1000);
+}
+
+[data-color-mode="brand-b-light"] {
+  --color-background-default-default: var(--color-primitives-white-1000);
+  --color-text-default-default: var(--color-primitives-gray-900);
+}
+
+:root {
+  --animate-spin: spin 1s linear infinite;
+}
+
+.animate-fade-in {
+  animation: fade-in 1s var(--animation-delay, 0s) ease forwards;
+}
+
+.animate-fade-up {
+  animation: fade-up 1s var(--animation-delay, 0s) ease forwards;
+}
+
+.animate-marquee {
+  animation: marquee var(--duration) infinite linear;
+}
+
+.animate-marquee-vertical {
+  animation: marquee-vertical var(--duration) linear infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 8s infinite;
+}
+
+.animate-spin {
+  animation: var(--animate-spin);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+@keyframes image-glow {
+  0% {
+    opacity: 0;
+    animation-timing-function: cubic-bezier(0.74, 0.25, 0.76, 1);
+  }
+
+  10% {
+    opacity: 0.7;
+    animation-timing-function: cubic-bezier(0.12, 0.01, 0.08, 0.99);
+  }
+
+  to {
+    opacity: 0.4;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fade-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes shimmer {
+  0%,
+  90%,
+  to {
+    background-position: calc(-100% - var(--shimmer-width)) 0;
+  }
+
+  30%,
+  60% {
+    background-position: calc(100% + var(--shimmer-width)) 0;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translate(0);
+  }
+
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+  }
+}
+
+@keyframes marquee-vertical {
+  0% {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(calc(-100% - var(--gap)));
+  }
+}

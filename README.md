@@ -1,8 +1,43 @@
-# Getting Started with Create React App
+# Modern Weather App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A sleek, responsive weather application built with React and Tailwind CSS, providing real-time weather information with a modern, minimal interface.
 
-## Available Scripts
+## Features
+
+- 🌡️ **Real-time Weather Data**
+  - Current temperature display
+  - Location-based weather information
+  - Metric units support
+
+- 🎨 **Modern UI/UX**
+  - Clean, minimal design
+  - Responsive layout
+  - Smooth transitions and animations
+
+- 🛠️ **Technical Features**
+  - Custom design system with CSS variables
+  - Light/Dark mode support
+  - Accessible components with ARIA labels
+  - Smooth animations (fade, shimmer, marquee)
+
+- 🔍 **Search Functionality**
+  - City search capability
+  - Real-time weather updates
+
+## Tech Stack
+
+- **Frontend**: React (Create React App)
+- **Styling**: 
+  - Tailwind CSS
+  - Custom CSS Variables
+  - PostCSS
+- **Design System**:
+  - Inter font family
+  - Custom spacing scales
+  - Theme variables
+  - Animation presets
+
+## Getting Started
 
 In the project directory, you can run:
 
@@ -29,15 +64,38 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## Design System
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The app uses a comprehensive design system including:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```css
+:root {
+  /* Typography */
+  --body-base-font-family: "Inter", Helvetica;
+  --body-base-font-size: 16px;
+  
+  /* Colors */
+  --color-primitives-gray-900: rgba(30, 30, 30, 1);
+  --color-primitives-white-1000: rgba(255, 255, 255, 1);
+  
+  /* Spacing */
+  --size-space-200: 8px;
+  --size-space-600: 24px;
+  --size-space-1200: 48px;
+}
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Browser Support
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+The application supports all modern browsers:
+- Chrome
+- Firefox
+- Safari
+- Edge
+
+## Links
+
+- Portfolio: [sedkiy.dev](https://www.sedkiy.dev)
 
 ## Learn More
 
