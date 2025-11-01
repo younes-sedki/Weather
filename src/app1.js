@@ -3,56 +3,17 @@ import { InputField } from "./input";
 import { ButtonElevated } from "./button";
 import { motion, AnimatePresence } from "framer-motion";
 
-// WEATHER ICON MAP - Updated, keyed strictly by OpenWeatherMap "icon" codes
-// See: https://openweathermap.org/weather-conditions
-const iconMap = {
-  "01d": "/v2/sunny.png",
-  "01n": "/v2/clear_night.png",
-  "02d": "/v2/partly_cloudy.png",
-  "02n": "/v2/partly_cloudy_night.png",
-  "03d": "/v2/cloudy.png",
-  "03n": "/v2/cloudy.png",
-  "04d": "/v2/mostly_cloudy_day.png",
-  "04n": "/v2/mostly_cloudy_night.png",
-  "09d": "/v2/showers_rain.png",
-  "09n": "/v2/showers_rain.png",
-  "10d": "/v2/scattered_showers_day.png",
-  "10n": "/v2/scattered_showers_night.png",
-  "11d": "/v2/strong_tstorms.png",
-  "11n": "/v2/isolated_scattered_tstorms_night.png",
-  "13d": "/v2/heavy_snow.png",
-  "13n": "/v2/heavy_snow.png",
-  "50d": "/v2/haze_fog_dust_smoke.png",
-  "50n": "/v2/haze_fog_dust_smoke.png",
-};
-
-
-// Safer fallback icon if nothing else found:
-const fallbackIcon = "/v2/cloudy.png";
-
-// PanelImageContent rewritten for OWM "icon" code logic
-function PanelImageContentWithIcon({ weatherData, iconCode }) {
+// PanelImageContent without icons
+function PanelImageContent({ weatherData }) {
   if (!weatherData || !weatherData.city) return null;
 
   const { city, country, temperature, condition, humidity, windSpeed } = weatherData;
-
-  let iconUrl = (iconCode && iconMap[iconCode]) || fallbackIcon;
 
   return (
     <div
       className="rounded-2xl p-6 border shadow-md flex flex-col items-center"
       style={{ background: "#F4F4F4", borderColor: "#1D546C" }}
     >
-      {iconUrl && (
-        <img
-          key={iconUrl}
-          src={iconUrl}
-          alt={condition}
-          className="mb-4 w-24 h-24"
-          style={{ filter: "drop-shadow(0 4px 16px #1D546C22)" }}
-          loading="lazy"
-        />
-      )}
       <h2 className="font-bold text-2xl mb-1" style={{ color: "#1D546C" }}>
         {city}
         {country ? `, ${country}` : ""}
@@ -108,8 +69,6 @@ export default function App() {
     windSpeed: "",
   });
   const [showPanel, setShowPanel] = useState(false);
-  // Use icon code from OWM API response:
-  const [weatherIconCode, setWeatherIconCode] = useState("");
   // Track lastPanelKey for <AnimatePresence> exit/enter separation
   const [lastPanelKey, setLastPanelKey] = useState(null);
 
@@ -134,12 +93,10 @@ export default function App() {
 
       let rawMain = weather0?.main || "";
       let rawDescription = weather0?.description || "";
-      let iconCode = weather0?.icon || "";
-      // Compose panel key BEFORE updating state
+      // Compose panel key BEFORE updating state, omit icon code
       const nextPanelKey =
         (data.name || "") +
-        (data.main?.temp ? `${Math.round(data.main.temp)}°C` : "") +
-        (iconCode || "");
+        (data.main?.temp ? `${Math.round(data.main.temp)}°C` : "");
 
       setShowPanel(false);
 
@@ -153,7 +110,6 @@ export default function App() {
           humidity: data.main?.humidity ? `${data.main.humidity}%` : "",
           windSpeed: data.wind?.speed ? `${Math.round(data.wind.speed)} m/s` : "",
         });
-        setWeatherIconCode(iconCode);
         setLastPanelKey(nextPanelKey);
         setShowPanel(true);
       }, 350);
@@ -224,7 +180,7 @@ export default function App() {
                 }}
                 className="w-full max-w-md mt-4"
               >
-                <PanelImageContentWithIcon weatherData={weatherData} iconCode={weatherIconCode} />
+                <PanelImageContent weatherData={weatherData} />
               </motion.div>
             )}
           </AnimatePresence>
